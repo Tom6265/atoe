@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-doc-to-epub"
+version = "0.1.0"
+description = "AI-assisted PDF and Word to EPUB conversion pipeline"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+  { name = "ATOE Contributors" }
+]
+requires-python = ">=3.10"
+dependencies = [
+  "fastapi>=0.110",
+  "uvicorn[standard]>=0.23",
+  "python-multipart>=0.0.6",
+  "httpx>=0.24",
+  "openai>=1.30",
+  "ebooklib>=0.18",
+  "markdown>=3.4",
+  "beautifulsoup4>=4.12",
+  "python-docx>=1.0",
+  "pdfminer.six>=20231228",
+  "typer>=0.9"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.4",
+  "pytest-asyncio>=0.23"
+]
+
+[project.scripts]
+aioepub = "ai_doc_to_epub.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
